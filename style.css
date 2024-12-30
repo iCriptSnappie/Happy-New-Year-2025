@@ -232,7 +232,7 @@ h6 a {
 }
 
 
-/* Basic modal styles */
+/* Modal styles */
 .modal {
     display: none; /* Hidden by default */
     position: fixed;
@@ -241,21 +241,49 @@ h6 a {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent overlay */
-    backdrop-filter: blur(5px); /* Blur effect for background */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    backdrop-filter: blur(5px); /* Blur effect for the background */
     opacity: 0; /* Invisible initially */
     transition: opacity 0.5s ease; /* Smooth fade-in effect */
+    overflow-y: auto; /* Enable vertical scrolling for modal */
+
+    /* Hide scrollbar but still make the content scrollable */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.modal::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
 }
 
 /* Modal content styles */
 .modal-content {
     position: relative;
-    margin: 5% auto;
+    margin: 2% auto;
     padding: 20px;
-    width: 60%;
-    background: white;
-    border-radius: 8px;
-    font-family: "Poppins", serif !important;
+    width: 90%;
+    max-height: 93vh; /* Limit the height to fit within the viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background: #1c1c1c; /* Dark background */
+    color: #f1f1f1; /* Light text color */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    font-family: "Poppins", sans-serif !important;
+
+    /* Hide scrollbar but still make the content scrollable */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
+}
+
+/* Modal content responsiveness */
+@media (min-width: 992px) {
+    .modal-content {
+        width: 60%; /* Decrease width for larger screens */
+    }
 }
 
 /* Close button */
@@ -263,10 +291,106 @@ h6 a {
     position: absolute;
     top: 10px;
     right: 15px;
-    color: black;
+    color: #f1f1f1;
     font-size: 24px;
     cursor: pointer;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff4757; /* Red hover color */
+}
+
+/* Profile section */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Responsive profile section for smaller screens */
+@media (min-width: 576px) {
+    .profile {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px; /* Margin at the bottom for mobile view */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    -webkit-user-drag: none;
+}
+
+/* Adjust profile-info text layout for smaller screens */
+.profile-info {
+    max-width: 100%; /* Full width on small screens */
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Larger screens: Profile info in left aligned */
+@media (min-width: 576px) {
+    .profile-info {
+        max-width: 70%;
+        margin-left: 20px;
+        text-align: left;
+    }
+}
+
+.profile-info h5 {
+    margin: 0 0 10px;
+    font-size: 1.4em;
+    color: #e3e3e3; /* Light text color */
+}
+
+.profile-info p, .profile-info ul {
+    margin: 5px 0;
+    color: #bbbbbb; /* Subtle text color */
+    font-size: 1em;
+}
+
+.profile-info ul {
+    padding-left: 20px;
+}
+
+.profile-info a {
+    color: #8d4cf5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.profile-info a:hover {
+    color: #ffdd47; /* Red hover effect for links */
+}
+
+/* New Year wish section */
+.new-year-wish {
+    background-color: #292929; /* Darker background */
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+}
+
+.new-year-wish h5 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #f5a623; /* Vibrant yellow-orange */
+}
+
+.new-year-wish p {
+    color: #f1f1f1;
+    font-size: 1em;
+    margin: 0;
 }
 
 /* Show the modal with a fade-in effect */
@@ -275,66 +399,27 @@ h6 a {
     opacity: 1;
 }
 
+/* Media query adjustments for mobile screens */
+@media (max-width: 575px) {
+    .modal-content {
+        width: 95%; /* Increase width for mobile screens */
+    }
 
-.profile {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
+    .profile-info h5 {
+        font-size: 1.2em; /* Slightly smaller text on mobile */
+    }
 
-.profile-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+    .profile-info p, .profile-info ul {
+        font-size: 0.9em; /* Smaller font size on mobile */
+    }
 
-.profile-info {
-    max-width: 70%;
-}
+    .profile-info ul {
+        padding-left: 0;
+        list-style: none;
+    }
 
-.profile-info h5 {
-    margin: 0 0 10px;
-    font-size: 1.2em;
-    color: #333;
-}
-
-.profile-info p, .profile-info ul {
-    margin: 5px 0;
-    color: #555;
-    font-size: 0.95em;
-}
-
-.profile-info ul {
-    padding-left: 20px;
-}
-
-.profile-info a{
-    color: #6929ff;
-    text-decoration: none;
-}
-
-.profile-info a.email:hover{
-    border-bottom: 1px dashed #6929ff;
-}
-
-.new-year-wish {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.new-year-wish h5 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    color: #8300bb;
-}
-
-.new-year-wish p {
-    color: #333;
-    font-size: 1em;
-    margin: 0;
+    .profile-photo {
+        width: 100px;
+        height: 100px; /* Smaller photo for mobile */
+    }
 }

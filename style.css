@@ -7,7 +7,34 @@
   box-sizing: border-box;
 }
 
-body {
+.small-screen-message {
+  display: none;
+}
+
+/* Show the main content for larger screens */
+.main-content {
+  display: block;
+}
+
+/* Media query for small screens */
+@media screen and (max-width: 768px) {
+  .main-content {
+    display: none;
+  }
+
+  /* Show the message on small screens */
+  .small-screen-message {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+  }
+}
+
+.main-content{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,59 +261,52 @@ h6 a {
 
 /* Modal styles */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
-    z-index: 1000; /* Ensures it appears on top */
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
-    backdrop-filter: blur(5px); /* Blur effect for the background */
-    opacity: 0; /* Invisible initially */
-    transition: opacity 0.5s ease; /* Smooth fade-in effect */
-    overflow-y: auto; /* Enable vertical scrolling for modal */
-
-    /* Hide scrollbar but still make the content scrollable */
-    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .modal::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for WebKit browsers */
+    display: none;
 }
 
-/* Modal content styles */
 .modal-content {
     position: relative;
     margin: 2% auto;
     padding: 20px;
     width: 90%;
-    max-height: 93vh; /* Limit the height to fit within the viewport */
-    overflow-y: auto; /* Enable vertical scrolling */
-    background: #1c1c1c; /* Dark background */
-    color: #f1f1f1; /* Light text color */
+    max-height: 93vh;
+    overflow-y: auto;
+    background: #1c1c1c;
+    color: #f1f1f1;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     font-family: "Poppins", sans-serif !important;
-
-    /* Hide scrollbar but still make the content scrollable */
-    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .modal-content::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for WebKit browsers */
+    display: none;
 }
 
-/* Modal content responsiveness */
 @media (min-width: 992px) {
     .modal-content {
-        width: 60%; /* Decrease width for larger screens */
+        width: 60%;
     }
 }
 
-/* Close button */
 .close {
     position: absolute;
     top: 10px;
@@ -299,7 +319,7 @@ h6 a {
 }
 
 .close:hover {
-    color: #ff4757; /* Red hover color */
+    color: #ff4757;
 }
 
 /* Profile section */
@@ -311,7 +331,6 @@ h6 a {
     font-size: 14px;
 }
 
-/* Responsive profile section for smaller screens */
 @media (min-width: 576px) {
     .profile {
         flex-direction: row;
@@ -324,19 +343,17 @@ h6 a {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 20px; /* Margin at the bottom for mobile view */
+    margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     -webkit-user-drag: none;
 }
 
-/* Adjust profile-info text layout for smaller screens */
 .profile-info {
-    max-width: 100%; /* Full width on small screens */
+    max-width: 100%;
     margin-top: 10px;
     text-align: center;
 }
 
-/* Larger screens: Profile info in left aligned */
 @media (min-width: 576px) {
     .profile-info {
         max-width: 70%;
@@ -348,12 +365,12 @@ h6 a {
 .profile-info h5 {
     margin: 0 0 10px;
     font-size: 1.4em;
-    color: #e3e3e3; /* Light text color */
+    color: #e3e3e3;
 }
 
 .profile-info p, .profile-info ul {
     margin: 5px 0;
-    color: #bbbbbb; /* Subtle text color */
+    color: #bbbbbb;
     font-size: 1em;
 }
 
@@ -368,12 +385,12 @@ h6 a {
 }
 
 .profile-info a:hover {
-    color: #ffdd47; /* Red hover effect for links */
+    color: #ffdd47;
 }
 
 /* New Year wish section */
 .new-year-wish {
-    background-color: #292929; /* Darker background */
+    background-color: #292929;
     padding: 15px;
     border-radius: 8px;
     text-align: center;
@@ -384,7 +401,7 @@ h6 a {
 .new-year-wish h5 {
     font-size: 1.4em;
     margin-bottom: 10px;
-    color: #f5a623; /* Vibrant yellow-orange */
+    color: #f5a623;
 }
 
 .new-year-wish p {
@@ -393,24 +410,22 @@ h6 a {
     margin: 0;
 }
 
-/* Show the modal with a fade-in effect */
 .modal.show {
     display: block;
     opacity: 1;
 }
 
-/* Media query adjustments for mobile screens */
 @media (max-width: 575px) {
     .modal-content {
-        width: 95%; /* Increase width for mobile screens */
+        width: 95%;
     }
 
     .profile-info h5 {
-        font-size: 1.2em; /* Slightly smaller text on mobile */
+        font-size: 1.2em;
     }
 
     .profile-info p, .profile-info ul {
-        font-size: 0.9em; /* Smaller font size on mobile */
+        font-size: 0.9em;
     }
 
     .profile-info ul {
@@ -420,6 +435,6 @@ h6 a {
 
     .profile-photo {
         width: 100px;
-        height: 100px; /* Smaller photo for mobile */
+        height: 100px;
     }
 }
